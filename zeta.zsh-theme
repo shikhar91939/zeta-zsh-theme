@@ -23,7 +23,7 @@ local white_bold=$fg_bold[white]
 
 local highlight_bg=$bg[red]
 
-local zeta='ζ'
+local zeta='§'
 
 # Machine name.
 function get_box_name {
@@ -51,7 +51,7 @@ function get_current_dir {
 # Git info.
 ZSH_THEME_GIT_PROMPT_PREFIX="%{$blue_bold%}"
 ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"
-ZSH_THEME_GIT_PROMPT_CLEAN="%{$green_bold%} ✔ "
+ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg[green]%} ✔ "
 ZSH_THEME_GIT_PROMPT_DIRTY="%{$red_bold%} ✘ "
 
 # Git status.
@@ -100,8 +100,7 @@ function print_prompt_head {
     local left_prompt="\
 %{$blue%}# \
 %{$green_bold%}$(get_usr_name)\
-%{$blue%}@\
-%{$cyan_bold%}$(get_box_name): \
+: \
 %{$yellow_bold%}$(get_current_dir)%{$reset_color%}\
 $(get_git_prompt) "
     local right_prompt="%{$blue%}($(get_time_stamp))%{$reset_color%} "
@@ -112,7 +111,7 @@ function get_prompt_indicator {
     if [[ $? -eq 0 ]]; then
         echo "%{$magenta_bold%}$zeta %{$reset_color%}"
     else
-        echo "%{$red_bold%}$zeta %{$reset_color%}"
+        echo "%{$white_bold%}$zeta %{$reset_color%}"
     fi
 }
 
